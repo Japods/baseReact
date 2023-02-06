@@ -1,28 +1,26 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "../../Store/Count/Count";
+import Button from "../../components/Button/Button";
+import { increment, decrement } from "../../Store/Count/Count";
 
-function App() {
-  const count = useSelector((state) => state.counter.initialState.value);
+const Counter = () => {
+  const counters = useSelector((state) => state.counter);
   const dispatch = useDispatch();
 
   return (
-    <div className="space-x-5">
-      <button
-        aria-label="Increment value"
-        onClick={() => dispatch(increment())}
-      >
-        Increment
-      </button>
-      <span>{count}</span>
-      <button
-        aria-label="Decrement value"
-        onClick={() => dispatch(decrement())}
-      >
-        Decrement
-      </button>
+    <div className="flex space-x-5">
+      {counters.map((counter) => (
+        <div key={counter.id}>
+          <Button label="+" action={() => dispatch(increment(counter.id))} />
+          <Button label="-" action={() => dispatch(decrement(counter.id))} />
+          <p className="text-center">{counter.value}</p>
+        </div>
+      ))}
+      <div className="text-2xl space-x-3 flex">
+        <div>Total:</div>
+        <div>{counters.reduce((sum, counter) => sum + counter.value, 0)}</div>
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Counter;

@@ -1,24 +1,16 @@
+import APIS from "../../services/Apis/index";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import APIS from "../../services/Apis";
 
-const getDetailsById = () => (dispatch) => {
+export const getContent = () => {
   return new Promise((resolve, reject) => {
     axios
       .get(APIS.SERVE_CORS + `${APIS.API_URL}/ott/contents`)
       .then((response) => {
-        dispatch({
-          type: "GET_DETAILS_SUCCESS",
-          payload: response.data.data,
-        });
-        resolve(response.data);
+        return resolve(response);
       })
       .catch((error) => {
-        dispatch({ type: "GET_DETAILS_ERROR", error });
-        reject(error);
+        return reject(error);
       });
   });
-};
-
-export default {
-  getDetailsById,
 };

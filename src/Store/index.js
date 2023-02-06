@@ -1,11 +1,13 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import counterReducer from "./Count/Count";
-import Content from "./Content/Content";
+import ContentReducer from "./Content/content";
+import imageContentReducer from "./Image/image";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
-  content: Content,
+  content: ContentReducer,
+  image: imageContentReducer,
 });
 
 export default configureStore({

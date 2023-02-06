@@ -1,36 +1,43 @@
-import React from "react";
+// import React from "react";
 import Slides from "../../components/Slides/Slides";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getContent } from "../../Store/Content/contentActions";
+import { useLocation } from "react-router-dom";
+import { setContent } from "../../Store/Content/content";
 
 function Contents() {
-  const data3 = [
-    {
-      title: "title 1",
-      Image: "https://dummyimage.com/600x400/000/fff",
-      description: "lorem ipsum dolor sit am",
-    },
-    {
-      title: "title 2",
-      Image: "https://dummyimage.com/601x400/000/fff",
-      description: "lorem ipsum dolor sit am",
-    },
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.content.data);
+  const [loading, setLoading] = useState(true);
+  const [list, setList] = useState([]);
 
-    {
-      title: "title 3",
-      Image: "https://dummyimage.com/602x400/000/fff",
-      description: "lorem ipsum dolor sit am",
-    },
+  useEffect(() => {
+    setLoading(true);
+    getContent()
+      .then((response) => {
+        dispatch(setContent(response.data.data.items));
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
 
-    {
-      title: "title 4",
-      Image: "https://dummyimage.com/603x400/000/fff",
-      description: "lorem ipsum dolor sit am",
-    },
-  ];
   return (
     <div>
-      <Slides items={data3} />
+      {loading ? (
+        "cargando"
+      ) : (
+        <>
+          <Slides items={data} />
+        </>
+      )}
     </div>
   );
 }
-
+{
+  /* <ContentImage />; */
+}
 export default Contents;
