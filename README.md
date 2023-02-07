@@ -6,7 +6,7 @@
 
 ## Detalles Técnicos
 
-El proyecto está hecho con React/Vite. Como era un proyecto de prueba, consideré prudente realizarlo con Vite para que se renderizara y se pudiera hacer build de manera mucho más rápida. Además, usa Service Side Rendering, por lo que lo consideré una buena forma de llevar un proyecto pequeño.
+    El proyecto está hecho con React/Vite. Como era un proyecto de prueba, consideré prudente realizarlo con Vite para que se renderizara y se pudiera hacer build de manera mucho más rápida. Además, usa Service Side Rendering, por lo que lo consideré una buena forma de llevar un proyecto pequeño.
 
 - ## Pasos para correr el proyecto
 
@@ -32,6 +32,19 @@ El proyecto está hecho con React/Vite. Como era un proyecto de prueba, consider
     
  - Presione el botón que dice `request temporary access to the demo server`. Esto le permitirá conectarse con ellos y ellos harán todo el trabajo para asegurar su API.
     - Una vez que acceda, ya tendrá acceso a la API y todo comenzará a renderizarse.
+
+ - Tiene un sistema de contador, manejado globalmente en un estado envualto por REDUX/TOOLKIT.
+
+ - Se aplicaron Principios SOLID, para la arquitectura y el manejo de SRP, de tal manera que un solo archivo, tenga su funcionalidad especifica, sobre todo en el Store, en lo componentes, por no ser tan grandes, 
+ si se fue mas flexible
+ ## Tecnologias que se usaron y servicios
+
+ - CSS/SASS/SCSS, Se utilizo para los estilos, a pesar de no fue tan necesario, por ser una aplicacion pequeña, se declararon un par de variables mas que todo para el texto general de la aplicacion
+ - Tailwind CSS, Una libreria que proporciona clases, de tal manera de optimizar las hojas de estilos para que fuesen mas cortas y tuvieran menos lineas de codigo, y se usara, exclusivamenta para lo necesario
+ - Redux/Toolkit, Se utilizo para manejar el estado de la aplicacion, tanto para los contadores, y el contenido de los playlist
+ - SOLID, `Single REsponsibility Principle` (SRP) para la arquitectura
+ - 
+
 
 ### Espero que guste el proyecto.
 
