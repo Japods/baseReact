@@ -1,18 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getImage } from "./imageAction";
 
-export const dataSliceImage = createSlice({
-  name: "image",
+const imagesSlice = createSlice({
+  name: "images",
   initialState: {
-    image: "",
+    image: null,
   },
-  reducers: {},
+  reducers: {
+    reset: (state) => {
+      state.image = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getImage.fulfilled, (state, action) => {
       state.image = action.payload;
     });
   },
 });
-export const { getImage1 } = dataSliceImage.actions;
 
-export default dataSliceImage.reducer;
+export default imagesSlice.reducer;

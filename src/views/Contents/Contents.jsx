@@ -3,15 +3,13 @@ import Slides from "../../components/Slides/Slides";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getContent } from "../../Store/Content/contentActions";
-import { useLocation } from "react-router-dom";
 import { setContent } from "../../Store/Content/content";
+import ContentImage from "./ContentImage";
 
 function Contents() {
-  const location = useLocation();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.content.data);
   const [loading, setLoading] = useState(true);
-  const [list, setList] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +21,7 @@ function Contents() {
       .catch(() => {
         setLoading(false);
       });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -32,12 +30,12 @@ function Contents() {
       ) : (
         <>
           <Slides items={data} />
+          <ContentImage />
         </>
       )}
     </div>
   );
 }
 {
-  /* <ContentImage />; */
 }
 export default Contents;

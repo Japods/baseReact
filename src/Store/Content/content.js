@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import contentState from "./contentState";
+import contentReducers from "./contentReducers";
 
 export const dataSlice = createSlice({
   name: "data",
-  initialState: {
-    data: [],
-  },
+  initialState: contentState,
   reducers: {
-    setContent: (state, action) => {
-      state.data = action.payload;
-    },
+    setContent: contentReducers.SET_CONTENT,
+    setContentById: contentReducers.SET_CONTENT_BY_ID,
   },
 });
-export const { setContent } = dataSlice.actions;
+export const { setContent, setContentById } = dataSlice.actions;
 
 export default dataSlice.reducer;

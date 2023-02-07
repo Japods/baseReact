@@ -1,9 +1,10 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 function Slides({ items }) {
   return (
-    <Swiper className="prueba" spaceBetween={50} slidesPerView={1}>
+    <Swiper className="box-slide" spaceBetween={50} slidesPerView={1}>
       {items.map((element, index) => {
         return (
           <SwiperSlide key={index}>
@@ -16,12 +17,14 @@ function Slides({ items }) {
                 height: "100vh",
               }}
             >
-              <div className="position-des-title space-y-5 ml-10">
-                <h2 className="title-image">{element.title.original}</h2>
-                <p className="description-image">
-                  {element.description.plain.original}
-                </p>
-              </div>
+              <Link to={`/contents/details/${element._id}`}>
+                <div className="position-des-title space-y-5 ml-10">
+                  <h2 className="title-image">{element.title.original}</h2>
+                  <p className="description-image">
+                    {element.description.plain.original}
+                  </p>
+                </div>
+              </Link>
             </div>
           </SwiperSlide>
         );

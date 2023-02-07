@@ -1,11 +1,12 @@
 import APIS from "../../services/Apis/index";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getImage = createAsyncThunk("getContent", (template) => {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(
+export const getImage = createAsyncThunk(
+  "images/getImage",
+  async (template, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
         APIS.SERVE_CORS +
           `${APIS.API_URL}/assets/images/view/${template.id}?type=${template.type}&scale=${template.scale}&placeholder=${template.placeholder}`,
         {
@@ -13,12 +14,10 @@ export const getImage = createAsyncThunk("getContent", (template) => {
             "Content-Type": "image/png",
           },
         }
-      )
-      .then((response) => {
-        resolve(response.data);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-});
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

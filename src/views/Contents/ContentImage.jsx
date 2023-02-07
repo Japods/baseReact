@@ -6,6 +6,7 @@ function Images({ id, type }) {
   const dispatch = useDispatch();
   const image = useSelector((state) => state.image.image);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const body = {
       id: "5c0a702daf9115001518f694",
@@ -13,7 +14,9 @@ function Images({ id, type }) {
       scale: "25",
       placeholder: true,
     };
-    dispatch(getImage(body));
+    dispatch(getImage(body)).then((response) => {
+      console.log(response);
+    });
   }, []);
 
   return <img src={image} />;
