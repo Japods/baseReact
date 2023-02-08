@@ -28,6 +28,8 @@ const useHandleError = () => {
       },
       (error) => {
         // Muestra una notificación con los detalles del error.
+
+        console.log(error, "erre");
         showNotification.callNotifications({
           title: error.response.status,
           message: error.message,

@@ -3,11 +3,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 
 function Slides({ items }) {
+  const recoverImage = (value) => {
+    value.map((element) => {
+      console.log(element);
+    });
+  };
   return (
     <Swiper className="box-slide" spaceBetween={50} slidesPerView={1}>
       {items.map((element, index) => {
         return (
-          <SwiperSlide key={index}>
+          <SwiperSlide
+            key={index}
+            onSlideChange={() => console.log("slide change")}
+          >
             <div
               style={{
                 background: "black",

@@ -17,6 +17,10 @@
     Entre a la carpeta y ejecute el siguiente comando:
 
 `npm install`
+   
+    Luego Corremos el Proyecto con el comando
+
+  `npm run dev`
 - ## descripcion de las tecnologias usadas
 
   En este proyecto se utilizacon varias tecnologias entre ellas:

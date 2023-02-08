@@ -2,25 +2,29 @@
 import Slides from "../../components/Slides/Slides";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getContent } from "../../Store/Content/contentActions";
-import { setContent } from "../../Store/Content/content";
 import ContentImage from "./ContentImage";
+// Importa la función useFetchContent
+import { useFetchContent } from "./Fetch/index";
+
+/**
+ * Componente Contents
+ * Este componente se encarga de mostrar los contenidos obtenidos del API
+ */
 
 function Contents() {
+  // Obtiene el dispatch de Redux
   const dispatch = useDispatch();
+  // Obtiene los datos del estado de Redux
   const data = useSelector((state) => state.content.data);
+
+  console.log(data, "data que llega");
+  // State para el estado de carga
   const [loading, setLoading] = useState(true);
+  const [image, setImage] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    getContent()
-      .then((response) => {
-        dispatch(setContent(response.data.data.items));
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    // Llamada a la función useFetchContent
+    useFetchContent(dispatch, setLoading);
   }, [dispatch]);
 
   return (

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setContentById } from "../../../Store/Content/content";
-import { getContentById } from "../../../Store/Content/contentActions";
+import { getContentByIdFetch } from "../Fetch/index";
 
 function ContentDetails() {
   const { id } = useParams();
@@ -10,21 +9,8 @@ function ContentDetails() {
   const element = useSelector((state) => state.content.element);
   const [loading, setLoading] = useState(true);
 
-  console.log(element, "element");
-
   useEffect(() => {
-    const body = {
-      id: id,
-    };
-
-    getContentById(body)
-      .then((response) => {
-        dispatch(setContentById(response.data.data));
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    getContentByIdFetch(id, dispatch, setLoading);
   }, [dispatch]);
   return (
     <div>

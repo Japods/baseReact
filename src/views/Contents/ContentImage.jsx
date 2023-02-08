@@ -1,6 +1,7 @@
 import { getImage } from "../../Store/Image/imageAction";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setImage } from "../../Store/Image/image";
 
 function Images({ id, type }) {
   const dispatch = useDispatch();
@@ -14,9 +15,13 @@ function Images({ id, type }) {
       scale: "25",
       placeholder: true,
     };
-    dispatch(getImage(body)).then((response) => {
-      console.log(response);
-    });
+    getImage(body)
+      .then((response) => {
+        dispatch(setImage(response));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return <img src={image} />;

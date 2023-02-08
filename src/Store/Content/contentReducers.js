@@ -4,6 +4,7 @@ const SET_CONTENT = (state, action) => {
 const SET_CONTENT_BY_ID = (state, action) => {
   state.element = action.payload;
 };
+
 export default {
   SET_CONTENT,
   SET_CONTENT_BY_ID,

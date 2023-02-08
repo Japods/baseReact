@@ -1,21 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getImage } from "./imageAction";
+import imageReducers from "./imageReducers";
 
 const imagesSlice = createSlice({
   name: "images",
   initialState: {
-    image: null,
+    image: "",
   },
   reducers: {
-    reset: (state) => {
-      state.image = null;
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(getImage.fulfilled, (state, action) => {
-      state.image = action.payload;
-    });
+    setImage: imageReducers.SET_IMAGE,
   },
 });
-
+export const { setImage } = imagesSlice.actions;
 export default imagesSlice.reducer;
