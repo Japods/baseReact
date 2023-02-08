@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getImage } from "./imageAction";
 import imageReducers from "./imageReducers";
 
 const imagesSlice = createSlice({

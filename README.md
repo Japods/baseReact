@@ -33,7 +33,7 @@
 
     `https://cors-anywhere.herokuapp.com/corsdemo`
     - En caso de Consumirse las 60 peticiones en una hora corra el siguiente comando
-     `npmm install -g vite`
+     `npm install -g vite`
      `vite --port 3000`
     - Esto Cambiara el puerto local, y se podra volver a conectar al servicio de CORS, a travez de otro puerto
 
@@ -42,12 +42,13 @@
     - Una vez que acceda, ya tendrá acceso a la API y todo comenzará a renderizarse.
 
  - Tiene un sistema de contador, manejado globalmente en un estado envualto por REDUX/TOOLKIT.
+ - Tiene un Slides de Items la cual al darle click sobre el titulo, podra redirigirse a la ruta content/details/:id y ahi se visualiaran los detalles
+ - Para las imagenes estoy solo pidiendo la del banner, Quiero expresar mi más sincera disculpa por no haber podido completar la tarea pedir imagen por slide, con la eficacia que hubiera deseado. La verdad es que encontré un poco de complejidad en la tarea, pero esto no es un obstáculo para mí en mi constante búsqueda de mejorar mis habilidades y aprender cosas nuevas
 
  - Se aplicaron Principios SOLID, para la arquitectura y el manejo de SRP, de tal manera que un solo archivo, tenga su funcionalidad especifica, sobre todo en el Store, en lo componentes, por no ser tan grandes, 
  si se fue mas flexible
- - Se crearon dos Hooks personalizados, uno para interceptar todo tipo de respuesta (catch) de parte del servidor, de tal manera para estar informando al cliente del status de su peticion, ese Hoooks (interceptor), se mezclo con otro Hooks personalizado para manejar las notificaciones, en intercepetor, se coloco una validacion para el status code personalizado que tiene Back-end (4041), ya que ese es el status que envia Back, pero el navegador dice que es un 200 OK, entonces, se metio una validacion, para notificar al usuario
+ - Se Creo un Hook personalizado para manejar las notificaciones, se coloco una validacion para el status code personalizado que tiene Back-end (4041), ya que ese es el status que envia Back, pero el navegador dice que es un 200 OK, entonces, se metio una validacion, para notificar al usuario
 
- - Existe un inconveniente, con la response, del servicio CORS-ANYWHERE, que si solamente se navega entre rutas, las REPSONSE, son `undefined`, por lo que se tienen que conectar directamente a la API, o presionar F5 al momento de ingresar a la ruta, de tal manera que el servicio pueda hacer el recorrido completo de las APIS.
  ## Tecnologias que se usaron y servicios
 
  - CSS/SASS/SCSS, Se utilizo para los estilos, a pesar de no fue tan necesario, por ser una aplicacion pequeña, se declararon un par de variables mas que todo para el texto general de la aplicacion
@@ -55,7 +56,7 @@
  - Redux/Toolkit, Se utilizo para manejar el estado de la aplicacion, tanto para los contadores, y el contenido de los playlist
  - SOLID, `Single REsponsibility Principle` (SRP) para la arquitectura
  - Vite, Sistema de reenderizado Potente usando Server Side Rendering
- - Axios, para las peticiones a la APIS
+ - FETCH, para las peticiones a la APIS
  - swiper, para manejar un componete de los SLIDES
  - animate.css, para manejar las animaciones de las noticiaciones, en caso de que haya una mala respuesta por parte del servidor
  - react Notifications Component, Para manejar las notificaciones
@@ -67,4 +68,4 @@ Saludos cordiales.
 
 --
 
-Jose Martinez# fz-sport
+Jose Martinez fz-sport

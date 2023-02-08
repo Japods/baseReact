@@ -8,7 +8,6 @@ import Footer from "./components/Footer/Footer";
 import store from "./Store/index";
 // import store from "./Store/Store"
 
-import Interceptor from "./hooks/Interceptor/Interceptor";
 import { ReactNotifications } from "react-notifications-component";
 
 // style
@@ -20,8 +19,6 @@ import "animate.css/animate.compat.css";
 import "swiper/css";
 
 function App() {
-  const ejecuteInterceptor = Interceptor();
-  ejecuteInterceptor;
   return (
     <BrowserRouter>
       <Provider store={store}>

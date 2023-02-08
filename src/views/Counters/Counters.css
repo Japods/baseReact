@@ -1,7 +1,5 @@
-@import "../Vars/Vars.scss";
-
-.header {
-  height: 50px;
+.counters-container {
+  height: calc(100vh - 50px);
   display: flex;
   justify-content: center;
   align-items: center;

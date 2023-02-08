@@ -1,34 +1,36 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function Slides({ items }) {
-  const recoverImage = (value) => {
-    value.map((element) => {
-      console.log(element);
-    });
-  };
+  // const recoverImage = (value) => {
+  //   console.log(value);
+  // };
+
+  const image = useSelector((state) => state.image.image);
+
   return (
     <Swiper className="box-slide" spaceBetween={50} slidesPerView={1}>
       {items.map((element, index) => {
         return (
-          <SwiperSlide
-            key={index}
-            onSlideChange={() => console.log("slide change")}
-          >
+          <SwiperSlide key={index}>
             <div
               style={{
-                background: "black",
+                backgroundImage: `url(${image})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 width: "100%",
                 height: "100vh",
               }}
+              // onChange={recoverImage(element.images)}
             >
               <Link to={`/contents/details/${element._id}`}>
                 <div className="position-des-title space-y-5 ml-10">
-                  <h2 className="title-image">{element.title.original}</h2>
-                  <p className="description-image">
+                  <h2 className="title-image text-black">
+                    {element.title.original}
+                  </h2>
+                  <p className="description-image text-black">
                     {element.description.plain.original}
                   </p>
                 </div>

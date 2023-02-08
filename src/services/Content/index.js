@@ -1,4 +1,4 @@
-import APIS from "../../services/Apis/index";
+import APIS from "../Apis/index";
 
 export const getContent = () => {
   return fetch(
@@ -7,7 +7,7 @@ export const getContent = () => {
   )
     .then((response) => response.json())
     .catch((errr) => {
-      console.error(errr);
+      console.log(errr);
     });
 };
 
