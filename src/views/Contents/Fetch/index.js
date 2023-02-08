@@ -19,7 +19,6 @@ export function useFetchContent(dispatch, setLoading) {
           type: "danger",
         });
       }
-
       const newElementPlaylist = response.data.items.map((element) => ({
         _id: element._id,
         title: element.title,
@@ -69,11 +68,11 @@ export function getContentByIdFetch(id, dispatch, setLoading) {
     });
 }
 
-export function getImagesFetch(dispatch) {
+export function getImagesFetch(dispatch, id_image) {
   const [showNotification] = useNotifications();
 
   const body = {
-    id: "61099cba21617600159f5cbb",
+    id: id_image,
     type: "banner",
     scale: "25",
     placeholder: true,
