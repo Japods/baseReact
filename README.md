@@ -43,11 +43,10 @@
 
  - Tiene un sistema de contador, manejado globalmente en un estado envualto por REDUX/TOOLKIT.
  - Tiene un Slides de Items la cual al darle click sobre el titulo, podra redirigirse a la ruta content/details/:id y ahi se visualiaran los detalles
- - Para las imagenes estoy solo pidiendo la del banner, Quiero expresar mi más sincera disculpa por no haber podido completar la tarea pedir imagen por slide, con la eficacia que hubiera deseado. La verdad es que encontré un poco de complejidad en la tarea, pero esto no es un obstáculo para mí en mi constante búsqueda de mejorar mis habilidades y aprender cosas nuevas
 
  - Se aplicaron Principios SOLID, para la arquitectura y el manejo de SRP, de tal manera que un solo archivo, tenga su funcionalidad especifica, sobre todo en el Store, en lo componentes, por no ser tan grandes, 
  si se fue mas flexible
- - Se Creo un Hook personalizado para manejar las notificaciones, se coloco una validacion para el status code personalizado que tiene Back-end (4041), ya que ese es el status que envia Back, pero el navegador dice que es un 200 OK, entonces, se metio una validacion, para notificar al usuario
+ - Se Creo un Hook personalizado para manejar las notificaciones globales de la aplicacion
 
  ## Tecnologias que se usaron y servicios
 
