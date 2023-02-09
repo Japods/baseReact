@@ -14,7 +14,7 @@ function useNotifications() {
      * @param {string} param0.message - Mensaje de la notificación
      * @param {string} param0.type - Tipo de notificación (info, success, warning, danger)
      */
-    
+
     callNotifications: ({ title, message, type }) => {
       Store.addNotification({
         title: title,

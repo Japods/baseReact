@@ -7,10 +7,12 @@ import { useFetchContent, getImagesFetch } from "./Fetch/index";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import Loader from "../../components/Loader/Loader";
-import { getIdImage } from "./Functions/useImageId";
+import { getIdImage } from "./Utils/useImageId";
+
 /**
  * Componente Contents
  * Este componente se encarga de mostrar los contenidos obtenidos del API
+ * @returns Renderiza un componente Swiper que permite hacer un slide de cada elemento
  */
 
 function Contents() {
@@ -23,14 +25,20 @@ function Contents() {
   const [loading, setLoading] = useState(true);
   const [itemSlide, setItemSlide] = useState(0);
 
+  /**
+   * useEffect, que se encarga de llamar a la función useFetchContent,
+   * para obtener los contenidos de la API
+   */
   useEffect(() => {
-    // Llamada a la función useFetchContent
     useFetchContent(dispatch, setLoading);
   }, [dispatch]);
 
+  /**
+   * onSwiperChange, para controlar el cambio de slides y
+   * tomar el index del slide actual, para obtener la imagen
+   * correspondiente
+   */
   const onSwiperChange = (swiper) => {
-    // Por cada Slide, tomo el valor de la posicion del slide,
-    //para luego usarlo y compararlo con el index, del arreglo de las imagenes
     setItemSlide(swiper.activeIndex);
   };
 
@@ -39,6 +47,11 @@ function Contents() {
     var id_image = getIdImage(data, itemSlide);
   }
   // Espero optener el id de la imagen para poder reenderizar, todo junto
+
+  /**
+   * useEffect, para obtener la imagen correspondiente al id obtenido
+   * y renderizarla
+   */
 
   useEffect(() => {
     if (!id_image) {

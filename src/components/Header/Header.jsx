@@ -17,9 +17,7 @@ function Header() {
                   key={i}
                   onClick={() => navigation(data.path)}
                   className={
-                    data.name === "Details"
-                      ? "hidden"
-                      : "flex cursor-pointer hover:underline"
+                    data.view ? "flex cursor-pointer hover:underline" : "hidden"
                   }
                 >
                   {data.name}

@@ -14,7 +14,13 @@ const SET_DECREMENT = (state, action) => {
   // Decrementar  el valor del item en el estado
 };
 
+const SET_ADD_COUNT = (state, action) => {
+  const nextId = Math.max(...state.map((item) => item.id)) + 1;
+  return [...state, { id: nextId, value: 0 }];
+};
+
 export default {
   SET_INCREMENT,
   SET_DECREMENT,
+  SET_ADD_COUNT,
 };

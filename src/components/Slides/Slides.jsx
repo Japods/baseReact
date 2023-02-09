@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 function Slides({ element }) {
   const image = useSelector((state) => state.image.image);
-  // console.log(images, "images element");
 
   return (
     <div

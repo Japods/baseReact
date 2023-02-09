@@ -9,14 +9,13 @@ export const getContent = () => {
       `${APIS.API_URL}/generic/playlists/details/62ed078f15f4850026b193bd?itemsPerPage=10`
   )
     .then((response) => {
-      if (response.status === 403) {
-        showNotification.callNotifications({
-          title: "CORS ACTIVOS",
-          message: "Leer la documentacion README.md",
-          type: "danger",
-        });
-
+      if (response.status === 429) {
+        window.location.replace("/429");
         return;
+      }
+
+      if (response.status === 403) {
+        window.location.replace("/403");
       }
       return response.json();
     })
@@ -37,13 +36,9 @@ export const getContentById = (template) => {
   return fetch(APIS.SERVE_CORS + `${APIS.API_URL}/ott/contents/${template.id}`)
     .then((response) => {
       if (response.status === 403) {
-        showNotification.callNotifications({
-          title: "CORS ACTIVOS",
-          message: "Leer la documentacion README.md",
-          type: "danger",
-        });
+        window.location.replace("/403");
       }
-      response.json();
+      return response.json();
     })
     .then((data) => data.data)
     .catch((err) => {

@@ -1,0 +1,24 @@
+.title-429 {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 75px;
+}
+
+.subtitle-429 {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 66px;
+}
+
+.terminal-style {
+  background-color: #0f0f0f;
+  color: #fff;
+  padding: 0.5rem;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}

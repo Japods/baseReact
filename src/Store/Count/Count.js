@@ -12,9 +12,11 @@ export const counterSlice = createSlice({
       countReducers.SET_INCREMENT /* Acción para incrementar el contador */,
     decrement:
       countReducers.SET_DECREMENT /* Acción para decrementar el contador */,
+    addCount: countReducers.SET_ADD_COUNT,
   },
 });
 /* Exportación de las acciones definidas para este slice */
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, addCount } =
+  counterSlice.actions;
 /* Exportación del reductor asociado a este slice */
 export default counterSlice.reducer;

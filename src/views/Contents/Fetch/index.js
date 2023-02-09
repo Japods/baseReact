@@ -12,13 +12,6 @@ export function useFetchContent(dispatch, setLoading) {
   setLoading(true);
   getContent()
     .then((response) => {
-      if (response.error) {
-        showNotification.callNotifications({
-          title: response.error.userMessage.es,
-          message: response.error.userMessage.es,
-          type: "danger",
-        });
-      }
       const newElementPlaylist = response.data.items.map((element) => ({
         _id: element._id,
         title: element.title,
@@ -30,40 +23,21 @@ export function useFetchContent(dispatch, setLoading) {
       setLoading(false);
     })
     .catch((err) => {
-      showNotification.callNotifications({
-        title: err,
-        message: err,
-        type: "danger",
-      });
       setLoading(false);
     });
 }
 
 export function getContentByIdFetch(id, dispatch, setLoading) {
-  const [showNotification] = useNotifications();
-
   const body = {
     id: id,
   };
 
   getContentById(body)
     .then((response) => {
-      if (response.error) {
-        showNotification.callNotifications({
-          title: response.error.userMessage.es,
-          message: response.error.userMessage.es,
-          type: "danger",
-        });
-      }
       dispatch(setContentById(response));
       setLoading(false);
     })
     .catch((err) => {
-      showNotification.callNotifications({
-        title: err,
-        message: err,
-        type: "danger",
-      });
       setLoading(false);
     });
 }
@@ -79,13 +53,6 @@ export function getImagesFetch(dispatch, id_image) {
   };
   getImage(body)
     .then((response) => {
-      if (response.error) {
-        showNotification.callNotifications({
-          title: response.error.userMessage.es,
-          message: response.error.userMessage.es,
-          type: "danger",
-        });
-      }
       dispatch(setImage(response));
     })
     .catch((error) => {

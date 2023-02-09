@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../../components/Button/Button";
-import { increment, decrement } from "../../Store/Count/Count";
+import TotalComponent from "./Components/Total";
+import { increment, decrement, addCount } from "../../Store/Count/Count";
 import "./Counters.css";
 
 const Counter = () => {
@@ -16,10 +17,11 @@ const Counter = () => {
           <p className="text-center">{counter.value}</p>
         </div>
       ))}
-      <div className="text-2xl space-x-3 flex items-center">
-        <div>Total:</div>
-        <div>{counters.reduce((sum, counter) => sum + counter.value, 0)}</div>
-      </div>
+
+      <TotalComponent
+        number={counters.reduce((sum, counter) => sum + counter.value, 0)}
+      />
+      <Button label="Agregar contador" action={() => dispatch(addCount())} />
     </div>
   );
 };
